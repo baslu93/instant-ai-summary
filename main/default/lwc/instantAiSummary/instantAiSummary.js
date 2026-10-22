@@ -1,20 +1,25 @@
-import { LightningElement, api, track } from 'lwc';
+import { LightningElement, api } from 'lwc';
 import generate from '@salesforce/apex/AiSummaryGenerateFromPrompt.generate';
+import TITLE from '@salesforce/label/c.InstantAiSummary_Title';
 
-export default class AiSummaryOnLoad extends LightningElement {
+export default class InstantAiSummary extends LightningElement {
     @api recordId;
     @api promptTemplate;
-    @track richText;
-    @track hasAnswer = false;
+    richText;
+    hasAnswer = false;
+
+    get cardClass() {
+        return this.hasAnswer ? 'ai-answer-card ai-answer-card--loaded' : 'ai-answer-card';
+    }
 
     get iconClass() {
         return this.hasAnswer ? 'ai-sparkle-icon' : 'ai-sparkle-icon pulse';
     }
 
     get titleChars() {
-        return [...'AI Summary'].map((char, i) => ({
+        return [...TITLE].map((char, i) => ({
             index: i,
-            char: char === ' ' ? ' ' : char,
+            char: char === ' ' ? ' ' : char,
             cssClass: this.hasAnswer ? '' : 'pulse',
             style: `animation-delay: ${i * 100}ms`
         }));

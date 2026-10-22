@@ -1,6 +1,6 @@
-# AI Summary On Load
+# Instant AI Summary
 
-<a href="https://githubsfdeploy.herokuapp.com?owner=baslu93&repo=ai-summary-on-load&ref=main">
+<a href="https://githubsfdeploy.herokuapp.com?owner=baslu93&repo=instant-ai-summary&ref=main">
   <img alt="Deploy to Salesforce"
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>

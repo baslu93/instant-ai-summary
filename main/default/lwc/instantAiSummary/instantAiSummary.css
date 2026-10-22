@@ -1,14 +1,15 @@
-/* lightning-card overrides via component hooks */
 .ai-answer-card {
     --slds-c-card-color-background: color-mix(in srgb, var(--slds-g-color-accent-2) 5%, var(--slds-g-color-neutral-base-100));
     --slds-c-card-color-border: var(--slds-g-color-accent-container-1);
 }
 
-/* Header title slot */
+.ai-answer-card--loaded {
+    --slds-c-card-body-spacing-block-end: var(--slds-g-spacing-4, 1rem);
+}
+
 .ai-card-title {
-    display: inline-flex;
+    display: flex;
     align-items: center;
-    gap: var(--slds-g-spacing-2, 4px);
 }
 
 .ai-sparkle-icon {
@@ -23,6 +24,7 @@
     font-size: var(--slds-g-font-size-3, 13px);
     font-weight: 700;
     color: var(--slds-g-color-accent-3);
+    padding-left: var(--slds-g-spacing-2, 4px);
 }
 
 .ai-label-text span {
