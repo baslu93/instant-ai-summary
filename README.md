@@ -33,6 +33,8 @@ Navigate to any record of that object type and the summary will appear automatic
 | `instantAiSummary` | LWC | Renders the AI-generated summary card on a record page. |
 | `AiSummaryGenerateFromPrompt` | Apex | Calls the Einstein LLM API to run the prompt template against the current record. |
 | `AiSummaryPromptsFilterByObject` | Apex | Dynamic picklist that filters available prompt templates by the page's object type, used in App Builder configuration. |
+| `EinsteinLLMService` | Apex | Interface for the Einstein LLM ConnectApi calls, enabling dependency injection in tests. |
+| `EinsteinLLMServiceImpl` | Apex | Production implementation of `EinsteinLLMService` that delegates to `ConnectApi.EinsteinLLM`. |
 
 
 ## Test
