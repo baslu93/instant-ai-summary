@@ -1,12 +1,20 @@
 {
-    "packageDirectories": [
-        {
-            "path": "main",
-            "default": true
-        }
-    ],
-    "name": "ai-summary-on-load",
-    "namespace": "",
-    "sfdcLoginUrl": "https://login.salesforce.com",
-    "sourceApiVersion": "68.0"
+  "packageDirectories": [
+    {
+      "versionName": "ver 0.1",
+      "versionNumber": "0.1.0.NEXT",
+      "path": "core",
+      "default": true,
+      "package": "Instant AI Summary",
+      "versionDescription": "A Salesforce LWC that automatically generates an AI-powered record summary when visible, with no user interaction required."
+    }
+  ],
+  "name": "instant-ai-summary",
+  "namespace": "aiSum",
+  "sfdcLoginUrl": "https://login.salesforce.com",
+  "sourceApiVersion": "68.0",
+  "packageAliases": {
+    "Instant AI Summary": "0HokP00000001lhSAA",
+    "Instant AI Summary@0.1.0-1": "04tkP0000006UTFQA2"
+  }
 }

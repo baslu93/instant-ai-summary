@@ -1,6 +1,6 @@
 import { LightningElement, api } from 'lwc';
 import generate from '@salesforce/apex/AiSummaryGenerateFromPrompt.generate';
-import TITLE from '@salesforce/label/c.InstantAiSummary_Title';
+import TITLE from '@salesforce/label/c.Title';
 
 export default class InstantAiSummary extends LightningElement {
     @api recordId;

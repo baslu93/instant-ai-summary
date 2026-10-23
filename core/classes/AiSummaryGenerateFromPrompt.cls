@@ -1,5 +1,8 @@
 public with sharing class AiSummaryGenerateFromPrompt {
 
+    @TestVisible
+    private static EinsteinLLMService service = new EinsteinLLMServiceImpl();
+
     @AuraEnabled
     public static String generate(String promptTemplateDeveloperName, String recordId) {
         ConnectApi.EinsteinPromptTemplateGenerationsRepresentation result;
@@ -20,7 +23,7 @@ public with sharing class AiSummaryGenerateFromPrompt {
             input.additionalConfig = new ConnectApi.EinsteinLLMAdditionalConfigInput();
             input.additionalConfig.numGenerations = 1;
 
-            result = ConnectApi.EinsteinLLM.generateMessagesForPromptTemplate(promptTemplateDeveloperName, input);
+            result = service.generateMessagesForPromptTemplate(promptTemplateDeveloperName, input);
         } catch (Exception e) {
             throw new AuraHandledException(e.getMessage());
         }
