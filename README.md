@@ -7,9 +7,9 @@
 
 A Salesforce LWC that automatically generates an AI-powered record summary when visible, with no user interaction required.
 
-![AI Summary On Load](docs/screenshot.png)
+![Instant AI Summary](docs/screenshot.png)
 
-Standard Salesforce AI Summary generate context when a user clicks a button. This component changes that interaction by running automatically as soon as it becomes visible.
+Standard Salesforce AI Summary generates context when a user clicks a button. This component changes that interaction by running automatically as soon as it becomes visible.
 
 While the Prompt Template runs in the background, the card takes up very little space, showing only a pulsing "AI Summary" title with a sparkle icon. Once the response is ready, the full summary renders directly inside the card, giving users immediate context the moment they open a record.
 
@@ -20,7 +20,7 @@ While the Prompt Template runs in the background, the card takes up very little 
 
 ### 1. Add the component to a record page
 
-Open App Builder on any Record Page, drag **AI Summary On Load** onto the layout and select the Prompt Template of type **Record Summary** you want to use. Save and activate the page.
+Open App Builder on any Record Page, drag **Instant AI Summary** onto the layout and select the Prompt Template of type **Record Summary** you want to use. Save and activate the page.
 
 ### 2. Open a record
 
@@ -30,7 +30,7 @@ Navigate to any record of that object type and the summary will appear automatic
 
 | Component | Type | Description |
 |---|---|---|
-| `aiSummaryOnLoad` | LWC | Renders the AI-generated summary card on a record page. |
+| `instantAiSummary` | LWC | Renders the AI-generated summary card on a record page. |
 | `AiSummaryGenerateFromPrompt` | Apex | Calls the Einstein LLM API to run the prompt template against the current record. |
 | `AiSummaryPromptsFilterByObject` | Apex | Dynamic picklist that filters available prompt templates by the page's object type, used in App Builder configuration. |
 
@@ -38,11 +38,11 @@ Navigate to any record of that object type and the summary will appear automatic
 ## Test
 
 ```bash
-sf org create scratch --definition-file config/project-scratch-def.json --alias ai-summary-on-load
-sf project deploy start --source-dir main --target-org ai-summary-on-load
-sf project deploy start --source-dir test --target-org ai-summary-on-load
-recordId=$(sf data query --query "SELECT Id FROM Account LIMIT 1" --target-org ai-summary-on-load --json | jq -r '.result.records[0].Id')
-sf org open --target-org ai-summary-on-load --path /lightning/r/Account/$recordId/view
+sf org create scratch --definition-file config/project-scratch-def.json --alias instant-ai-summary
+sf project deploy start --source-dir main --target-org instant-ai-summary
+sf project deploy start --source-dir test --target-org instant-ai-summary
+recordId=$(sf data query --query "SELECT Id FROM Account LIMIT 1" --target-org instant-ai-summary --json | jq -r '.result.records[0].Id')
+sf org open --target-org instant-ai-summary --path /lightning/r/Account/$recordId/view
 ```
 
 ## Requirements
