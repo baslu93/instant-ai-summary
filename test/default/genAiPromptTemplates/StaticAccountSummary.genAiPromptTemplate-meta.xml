@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GenAiPromptTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <activeVersionIdentifier>ibV1tYG/Itxon9TJSmmwvu782oCph9GlZuCVJ5MEOsE=_3</activeVersionIdentifier>
+    <description>Return a pre-defined Account Summary</description>
+    <developerName>StaticAccountSummary</developerName>
+    <masterLabel>Static Account Summary</masterLabel>
+    <overridable>false</overridable>
+    <relatedEntity>Account</relatedEntity>
+    <templateVersions>
+        <content>Return exactly the following reach text:
+
+&lt;div&gt;
+    &lt;b&gt;General Info&lt;/b&gt;
+    &lt;br&gt; Bruce Wayne is a key participant in our advanced therapeutics and cellular regeneration program.
+    &lt;br&gt;
+    &lt;br&gt;
+    &lt;b&gt;Info&lt;/b&gt;
+    &lt;br&gt;Recent updates regarding his clinical status and recovery:
+    &lt;ul&gt;
+        &lt;li&gt;He has confirmed that no additional injuries have been taken since the previous assessment &lt;a href=&quot;/fake&quot;&gt;[1]&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;He is currently adhering to the prescribed experimental medication regimen &lt;a href=&quot;/fake&quot;&gt;[2]&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;Biometric telemetry shows a positive response to the latest therapeutic adjustments &lt;a href=&quot;/fake&quot;&gt;[3]&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;b&gt;To-Do&lt;/b&gt;
+    &lt;ul&gt;
+        &lt;li&gt;Schedule a comprehensive clinical follow-up within the next few days to monitor his recovery &lt;a href=&quot;/fake&quot;&gt;[4]&lt;/a&gt;&lt;/li&gt;
+        &lt;li&gt;Analyze the latest blood panel results post-medication&lt;/li&gt;
+        &lt;li&gt;Prepare the next dosage phase of the tissue-repair compound&lt;/li&gt;
+    &lt;/ul&gt;
+&lt;/div&gt;
+</content>
+        <fileDroppingStrategy>{"dropFilesBy":"LAST_MODIFIED_DATE","dropFileStartingWith":"OLDEST"}</fileDroppingStrategy>
+        <inputs>
+            <apiName>objectToSummarize</apiName>
+            <definition>SOBJECT://Account</definition>
+            <referenceName>Input:Account</referenceName>
+            <required>true</required>
+        </inputs>
+        <isCitationEnabled>false</isCitationEnabled>
+        <primaryModel>sfdc_ai__DefaultGPT5Mini</primaryModel>
+        <status>Published</status>
+        <templateFormat>FormulaExpression</templateFormat>
+        <versionIdentifier>ibV1tYG/Itxon9TJSmmwvu782oCph9GlZuCVJ5MEOsE=_3</versionIdentifier>
+    </templateVersions>
+    <type>einstein_gpt__recordSummary</type>
+    <visibility>Global</visibility>
+</GenAiPromptTemplate>

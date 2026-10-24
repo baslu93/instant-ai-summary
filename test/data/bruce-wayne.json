@@ -1,0 +1,26 @@
+{
+  "records": [
+    {
+      "attributes": {
+        "type": "Account",
+        "referenceId": "BruceWayneRef"
+      },
+      "RecordType": {"Name": "Person Account"},
+      "Salutation": "Mr.",
+      "FirstName": "Bruce",
+      "LastName": "Wayne",
+      "Phone": "(212) 555-0193",
+      "PersonEmail": "bruce.wayne@wayneenterprises.com",
+      "PersonMobilePhone": "(212) 555-0194",
+      "PersonMailingStreet": "1007 Mountain Drive",
+      "PersonMailingCity": "Gotham City",
+      "PersonMailingState": "NJ",
+      "PersonMailingPostalCode": "07001",
+      "PersonMailingCountry": "US",
+      "NumberOfEmployees": 12500,
+      "AnnualRevenue": 8500000000,
+      "Type": "Customer - Direct",
+      "Description": "Key participant in advanced therapeutics and cellular regeneration program. Subject is adhering to prescribed experimental medication regimen with positive biometric telemetry responses."
+    }
+  ]
+}

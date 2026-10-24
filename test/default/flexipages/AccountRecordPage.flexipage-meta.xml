@@ -211,8 +211,8 @@
                     <name>promptTemplate</name>
                     <value>StaticAccountSummary</value>
                 </componentInstanceProperties>
-                <componentName>aiSum:instantAiSummary</componentName>
-                <identifier>aiSum_instantAiSummary</identifier>
+                <componentName>aisum:instantAiSummary</componentName>
+                <identifier>aisum_instantAiSummary</identifier>
             </componentInstance>
         </itemInstances>
         <itemInstances>

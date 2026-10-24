@@ -1,0 +1,11 @@
+{
+    "orgName": "instant-ai-summary-test",
+    "edition": "Developer",
+    "features": ["Einstein1AIPlatform", "PersonAccounts"],
+    "settings": {
+        "einsteinGptSettings": {
+            "enableEinsteinGptPlatform": true
+        }
+    },
+    "language": "en_US"
+}
