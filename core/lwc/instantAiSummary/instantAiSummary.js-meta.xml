@@ -10,6 +10,10 @@
     <targetConfigs>
         <targetConfig targets="lightning__RecordPage">
             <property name="promptTemplate" type="String" label="Prompt Template" datasource="apex://AiSummaryPromptsFilterByObject"/>
+            <supportedFormFactors>
+                <supportedFormFactor type="Large" />
+                <supportedFormFactor type="Small" />
+            </supportedFormFactors>
         </targetConfig>
     </targetConfigs>
 </LightningComponentBundle>
