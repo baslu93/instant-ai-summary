@@ -39,12 +39,11 @@ Navigate to any record of that object type and the summary will appear automatic
 
 ## Test
 
+Run the setup script to create a scratch org, install the package, deploy test metadata, and seed a sample PersonAccount:
+
 ```bash
-sf org create scratch --definition-file config/project-scratch-def.json --alias instant-ai-summary
-sf project deploy start --source-dir main --target-org instant-ai-summary
-sf project deploy start --source-dir test --target-org instant-ai-summary
-recordId=$(sf data query --query "SELECT Id FROM Account LIMIT 1" --target-org instant-ai-summary --json | jq -r '.result.records[0].Id')
-sf org open --target-org instant-ai-summary --path /lightning/r/Account/$recordId/view
+cd test
+./scripts/setup.sh
 ```
 
 ## Requirements
