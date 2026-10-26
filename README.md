@@ -14,7 +14,7 @@ Standard Salesforce AI Summary generates context when a user clicks a button. Th
 While the Prompt Template runs in the background, the card takes up very little space, showing only a pulsing "AI Summary" title with a sparkle icon. Once the response is ready, the full summary renders directly inside the card, giving users immediate context the moment they open a record.
 
 > [!WARNING]  
-> This component consumes tokens on page load. Consider using it for orgs on an unmetered token tier.
+> This component consumes tokens when it becomes visible. Consider using it for orgs on an unmetered token tier.
 
 ## Setup
 
