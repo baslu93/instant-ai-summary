@@ -32,8 +32,8 @@ body:
       multiple: false
       description: Value can be found in User Interface > Themes and Branding
       options:
+       - Lightning (SLDS 2)
         - Lightning (SLDS 1)
-        - Lightning (SLDS 2)
     validations:
       required: true
   - type: dropdown
@@ -47,6 +47,8 @@ body:
         - Safari
         - Microsoft Edge
         - Other
+    validations:
+      required: false
   - type: input
     id: other-browser
     attributes:
