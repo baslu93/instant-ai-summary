@@ -33,7 +33,7 @@ body:
       description: Value can be found in User Interface > Themes and Branding
       options:
        - Lightning (SLDS 2)
-        - Lightning (SLDS 1)
+       - Lightning (SLDS 1)
     validations:
       required: true
   - type: dropdown
