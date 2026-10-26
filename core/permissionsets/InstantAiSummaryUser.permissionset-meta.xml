@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <classAccesses>
+        <apexClass>AiSummaryGenerateFromPrompt</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <classAccesses>
+        <apexClass>AiSummaryPromptsFilterByObject</apexClass>
+        <enabled>true</enabled>
+    </classAccesses>
+    <customPermissions>
+        <enabled>true</enabled>
+        <name>UseInstantAiSummary</name>
+    </customPermissions>
+    <description>Grants access to Instant AI Summary functionality. Note: Users require the &apos;Einstein Prompt Templates&apos; license to be assigned separately.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+    <label>Instant AI Summary User</label>
+</PermissionSet>
