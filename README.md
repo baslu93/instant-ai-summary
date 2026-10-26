@@ -7,7 +7,7 @@
 
 A Salesforce LWC that automatically generates an AI-powered record summary when visible, with no user interaction required.
 
-![Instant AI Summary](docs/screenshot.png)
+![Instant AI Summary](docs/docs/screenshot_loaded.png)
 
 Standard Salesforce AI Summary generates context when a user clicks a button. This component changes that interaction by running automatically as soon as it becomes visible.
 
