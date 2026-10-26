@@ -40,8 +40,8 @@ export default class InstantAiSummary extends LightningElement {
             });
             this.richText = result;
         } catch (error) {
-            console.error('Error generating summary:', error);
-            this.richText = error?.body?.message ?? ERROR_MESSAGE;
+            console.error(error);
+            this.richText = ERROR_MESSAGE;
         } finally {
             this.hasAnswer = true;
         }
