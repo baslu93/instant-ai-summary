@@ -1,6 +1,7 @@
 import { LightningElement, api } from 'lwc';
 import generate from '@salesforce/apex/AiSummaryGenerateFromPrompt.generate';
 import TITLE from '@salesforce/label/c.Title';
+import ERROR_MESSAGE from '@salesforce/label/c.ErrorMessage';
 
 export default class InstantAiSummary extends LightningElement {
     @api recordId;
@@ -38,9 +39,11 @@ export default class InstantAiSummary extends LightningElement {
                 recordId: this.recordId
             });
             this.richText = result;
-            this.hasAnswer = true;
         } catch (error) {
             console.error('Error generating summary:', error);
+            this.richText = error?.body?.message ?? ERROR_MESSAGE;
+        } finally {
+            this.hasAnswer = true;
         }
     }
 }

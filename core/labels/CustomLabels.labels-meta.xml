@@ -7,4 +7,11 @@
         <shortDescription>Instant AI Summary Card Title</shortDescription>
         <value>AI Summary</value>
     </labels>
+    <labels>
+        <fullName>ErrorMessage</fullName>
+        <language>en_US</language>
+        <protected>false</protected>
+        <shortDescription>Instant AI Summary Error Message</shortDescription>
+        <value>Something went wrong while generating the summary. Try refreshing the page or reach out to your Salesforce administrator.</value>
+    </labels>
 </CustomLabels>

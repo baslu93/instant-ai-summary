@@ -5,6 +5,13 @@ private class AiSummaryGenerateFromPromptTest {
     private static final Id RECORD_ID = '001000000000001AAA';
     private static final String GENERATED_TEXT = 'This is an AI-generated summary.';
 
+    private class ThrowingEinsteinLLMService implements StubProvider {
+        public Object handleMethodCall(Object stubbedObject, String stubbedMethodName, Type returnType,
+            List<Type> listOfParamTypes, List<String> listOfParamNames, List<Object> listOfArgs) {
+            throw new CalloutException('Service unavailable');
+        }
+    }
+
     private class MockEinsteinLLMService implements StubProvider {
         private ConnectApi.EinsteinPromptTemplateGenerationsRepresentation result;
 
@@ -58,7 +65,47 @@ private class AiSummaryGenerateFromPromptTest {
             AiSummaryGenerateFromPrompt.generate(TEMPLATE_DEV_NAME, RECORD_ID);
             Assert.fail('Expected AuraHandledException');
         } catch (AuraHandledException e) {
-            Assert.isNotNull(e);
+            Assert.areEqual('No response generated.', e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    @IsTest
+    static void generate_throwsAuraHandledException_whenPromptTemplateIsBlank() {
+        Test.startTest();
+        try {
+            AiSummaryGenerateFromPrompt.generate('', RECORD_ID);
+            Assert.fail('Expected AuraHandledException');
+        } catch (AuraHandledException e) {
+            Assert.areEqual('Prompt template is required.', e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    @IsTest
+    static void generate_throwsAuraHandledException_whenRecordIdIsBlank() {
+        Test.startTest();
+        try {
+            AiSummaryGenerateFromPrompt.generate(TEMPLATE_DEV_NAME, '');
+            Assert.fail('Expected AuraHandledException');
+        } catch (AuraHandledException e) {
+            Assert.areEqual('Record ID is required.', e.getMessage());
+        }
+        Test.stopTest();
+    }
+
+    @IsTest
+    static void generate_throwsAuraHandledException_whenServiceThrows() {
+        AiSummaryGenerateFromPrompt.service = (EinsteinLLMService) Test.createStub(
+            EinsteinLLMService.class, new ThrowingEinsteinLLMService()
+        );
+
+        Test.startTest();
+        try {
+            AiSummaryGenerateFromPrompt.generate(TEMPLATE_DEV_NAME, RECORD_ID);
+            Assert.fail('Expected AuraHandledException');
+        } catch (AuraHandledException e) {
+            Assert.areEqual('Service unavailable', e.getMessage());
         }
         Test.stopTest();
     }
