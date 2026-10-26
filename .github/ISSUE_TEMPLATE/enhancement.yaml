@@ -1,0 +1,33 @@
+name: Feature Request
+description: File a feature request.
+title: "[Feat]: "
+labels: ["enhancement"]
+assignees:
+  - baslu93
+type: enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this feature request!
+  - type: textarea
+    id: solution-description
+    attributes:
+      label: Describe the solution you'd like?
+      description: A clear description of what you want to happen.
+    validations:
+      required: true
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context about the feature request here.
+    validations:
+      required: false
+  - type: upload
+    id: mockups
+    attributes:
+      label: Mockups
+      description: If applicable, add mockups to help explain your request.
+    validations:
+      required: false

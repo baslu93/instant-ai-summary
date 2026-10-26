@@ -1,0 +1,64 @@
+name: Bug Report
+description: File a bug report.
+title: "[Bug]: "
+labels: ["bug"]
+assignees:
+  - baslu93
+type: bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report!
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: Please describe what happened in as much detail as possible.
+    validations:
+      required: true
+  - type: input
+    id: instance
+    attributes:
+      label: Instance
+      description: Value can be found in Setup > Company Information
+      placeholder: CH4S
+    validations:
+      required: true
+  - type: dropdown
+    id: theme
+    attributes:
+      label: Theme
+      multiple: false
+      description: Value can be found in User Interface > Themes and Branding
+      options:
+        - Lightning (SLDS 1)
+        - Lightning (SLDS 2)
+    validations:
+      required: true
+  - type: dropdown
+    id: browsers
+    attributes:
+      label: What browsers are you seeing the problem on?
+      multiple: false
+      options:
+        - Firefox
+        - Chrome
+        - Safari
+        - Microsoft Edge
+        - Other
+  - type: input
+    id: other-browser
+    attributes:
+      label: Other browser
+      description: If you selected "Other" above, please specify the browser here.
+      placeholder: Specify the browser
+    validations:
+      required: false
+  - type: upload
+    id: screenshots
+    attributes:
+      label: Upload screenshots
+      description: If applicable, add screenshots to help explain your problem.
+    validations:
+      required: false
