@@ -5,7 +5,7 @@
        src="https://raw.githubusercontent.com/afawcett/githubsfdeploy/master/deploy.png">
 </a>
 
-A Salesforce LWC that automatically generates an AI-powered record summary when visible, with no user interaction required.
+Salesforce Lightning Web Component that displays an AI-generated record summary using a configurable prompt template. Runs automatically when visible without requiring user interaction.
 
 ![Instant AI Summary](docs/screenshot_loaded.png)
 
