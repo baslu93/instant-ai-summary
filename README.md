@@ -18,11 +18,18 @@ While the Prompt Template runs in the background, the card takes up very little 
 
 ## Setup
 
-### 1. Add the component to a record page
+### 1. Assign the permission set
 
-Open App Builder on any Record Page, drag **Instant AI Summary** onto the layout and select the Prompt Template of type **Record Summary** you want to use. Save and activate the page.
+Assign the **Instant AI Summary User** permission set to every user who should see the summary card. This grants access to the required Apex classes and the `UseInstantAiSummary` custom permission.
 
-### 2. Open a record
+> [!NOTE]
+> Users also need the **Einstein Prompt Templates** license assigned separately.
+
+### 2. Add the component to a record page
+
+Open App Builder on any Record Page, drag **Instant AI Summary** onto the layout and select the Prompt Template of type **Record Summary** you want to use. Then set the component visibility filter to show only when the user has the **Use Instant AI Summary** custom permission. Save and activate the page.
+
+### 3. Open a record
 
 Navigate to any record of that object type and the summary will appear automatically on load.
 
@@ -35,6 +42,8 @@ Navigate to any record of that object type and the summary will appear automatic
 | `AiSummaryPromptsFilterByObject` | Apex | Dynamic picklist that filters available prompt templates by the page's object type, used in App Builder configuration. |
 | `EinsteinLLMService` | Apex | Interface for the Einstein LLM ConnectApi calls, enabling dependency injection in tests. |
 | `EinsteinLLMServiceImpl` | Apex | Production implementation of `EinsteinLLMService` that delegates to `ConnectApi.EinsteinLLM`. |
+| `UseInstantAiSummary` | Custom Permission | Controls component visibility on Lightning pages; only users with this permission see the summary card. |
+| `InstantAiSummaryUser` | Permission Set | Grants access to the required Apex classes and the `UseInstantAiSummary` custom permission. |
 
 
 ## Test
