@@ -30,6 +30,18 @@ private class AiSummaryPromptsFilterByObjectTest {
             this.result = result;
         }
 
+        /**
+         * @description Returns the pre-configured result when getPromptTemplates is invoked.
+         *   Implements System.StubProvider.handleMethodCall.
+         *   @see https://developer.salesforce.com/docs/atlas.en-us.apexref.meta/apexref/apex_interface_System_StubProvider.htm
+         * @param stubbedObject The stubbed object.
+         * @param stubbedMethodName The name of the invoked method.
+         * @param returnType The return type of the invoked method.
+         * @param listOfParamTypes A list of the parameter types of the invoked method.
+         * @param listOfParamNames A list of the parameter names of the invoked method.
+         * @param listOfArgs The actual argument values passed into this method at runtime.
+         * @return The pre-configured EinsteinPromptRecordRepresentation list, or null for other methods.
+         */
         @SuppressWarnings('PMD.ExcessiveParameterList') // signature mandated by StubProvider interface
         public Object handleMethodCall(Object stubbedObject, String stubbedMethodName, Type returnType,
             List<Type> listOfParamTypes, List<String> listOfParamNames, List<Object> listOfArgs) {
