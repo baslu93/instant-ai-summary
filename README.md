@@ -23,7 +23,7 @@ While the Prompt Template runs in the background, the card takes up very little 
 Assign the **Instant AI Summary User** permission set to every user who should see the summary card. This grants access to the required Apex classes and the `UseInstantAiSummary` custom permission.
 
 > [!NOTE]
-> Users also need the **Einstein Prompt Templates** license assigned separately.
+> Users also need the **EinsteinGPT Prompt Template User** permission set assigned separately.
 
 ### 2. Add the component to a record page
 
@@ -40,8 +40,6 @@ Navigate to any record of that object type and the summary will appear automatic
 | `instantAiSummary` | LWC | Renders the AI-generated summary card on a record page. |
 | `AiSummaryGenerateFromPrompt` | Apex | Calls the Einstein LLM API to run the prompt template against the current record. |
 | `AiSummaryPromptsFilterByObject` | Apex | Dynamic picklist that filters available prompt templates by the page's object type, used in App Builder configuration. |
-| `EinsteinLLMService` | Apex | Interface for the Einstein LLM ConnectApi calls, enabling dependency injection in tests. |
-| `EinsteinLLMServiceImpl` | Apex | Production implementation of `EinsteinLLMService` that delegates to `ConnectApi.EinsteinLLM`. |
 | `UseInstantAiSummary` | Custom Permission | Controls component visibility on Lightning pages; only users with this permission see the summary card. |
 | `InstantAiSummaryUser` | Permission Set | Grants access to the required Apex classes and the `UseInstantAiSummary` custom permission. |
 
