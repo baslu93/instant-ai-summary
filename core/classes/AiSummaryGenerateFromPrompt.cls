@@ -1,8 +1,17 @@
+/**
+ * @description Aura-enabled service that generates a Record Summary from a Prompt Template.
+ */
 public with sharing class AiSummaryGenerateFromPrompt {
 
     @TestVisible
-    private static EinsteinLLMService service = new EinsteinLLMServiceImpl();
+    private static EinsteinLLMServiceInterface service = new EinsteinLLMServiceImpl();
 
+    /**
+     * @description Calls the Einstein LLM to generate a summary for the given record using the specified Prompt Template.
+     * @param promptTemplateDeveloperName The developer name of the Prompt Template to use.
+     * @param recordId The ID of the record to summarize.
+     * @return The generated summary text.
+     */
     @AuraEnabled
     public static String generate(String promptTemplateDeveloperName, String recordId) {
         validate(promptTemplateDeveloperName, recordId);
@@ -11,7 +20,8 @@ public with sharing class AiSummaryGenerateFromPrompt {
         input.isPreview = false;
 
         Schema.SObjectType sObjectType = ((Id) recordId).getSObjectType();
-        String objectName = sObjectType.getDescribe().getName();
+        @SuppressWarnings('PMD.EagerlyLoadedDescribeSObjectResult') // object type is resolved dynamically from the recordId at runtime
+        String objectName = sObjectType.getDescribe(Schema.SObjectDescribeOptions.DEFERRED).getName();
 
         ConnectApi.WrappedValue recordValue = new ConnectApi.WrappedValue();
         recordValue.value = new Map<String, Object>{ 'id' => recordId };
@@ -28,7 +38,7 @@ public with sharing class AiSummaryGenerateFromPrompt {
             result = service.generateMessagesForPromptTemplate(promptTemplateDeveloperName, input);
         } catch (Exception e) {
             throw handledException(e.getMessage());
-        }   
+        }
         if (result?.generations == null || result.generations.isEmpty()) {
             throw handledException('No response generated.');
         }
