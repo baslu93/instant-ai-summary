@@ -1,11 +1,15 @@
-public class EinsteinLLMServiceImpl implements EinsteinLLMService {
+/** @description Concrete implementation of EinsteinLLMServiceInterface that delegates to ConnectApi.EinsteinLLM static methods. */
+public class EinsteinLLMServiceImpl implements EinsteinLLMServiceInterface {
+    /** @description {@inheritDoc} */
+    @SuppressWarnings('PMD.ExcessiveParameterList, PMD.AvoidBooleanMethodParameters') // mirrors ConnectApi.EinsteinLLM.getPromptTemplates signature
     public ConnectApi.EinsteinPromptRecordCollectionOutputRepresentation getPromptTemplates(
-        String networkId, String language, Integer page, Integer pageSize,
-        List<String> additionalFields, String promptTemplateType, String status, Boolean requireActive
+        String query, String sortBy, Integer offset, Integer pageLimit,
+        List<String> fields, String type, String relatedEntity, Boolean isActive
     ) {
-        return ConnectApi.EinsteinLLM.getPromptTemplates(networkId, language, page, pageSize, additionalFields, promptTemplateType, status, requireActive);
+        return ConnectApi.EinsteinLLM.getPromptTemplates(query, sortBy, offset, pageLimit, fields, type, relatedEntity, isActive);
     }
 
+    /** @description {@inheritDoc} */
     public ConnectApi.EinsteinPromptTemplateGenerationsRepresentation generateMessagesForPromptTemplate(
         String promptTemplateDeveloperName,
         ConnectApi.EinsteinPromptTemplateGenerationsInput input
