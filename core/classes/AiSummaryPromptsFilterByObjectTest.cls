@@ -7,14 +7,22 @@ private class AiSummaryPromptsFilterByObjectTest {
         new Template('Executive Brief', 'ExecutiveBrief')
     };
 
+    @TestSetup
+    static void setup() {
+        UserFactory.create();
+    }
+
     private class Template {
-        String label, devName;
+        String label;
+        String devName;
+
         Template(String label, String devName) {
             this.label = label;
             this.devName = devName;
         }
     }
 
+    /** @description Stub that returns a pre-configured prompt record collection to simulate a successful service call. */
     private class MockEinsteinLLMService implements StubProvider {
         private ConnectApi.EinsteinPromptRecordCollectionOutputRepresentation result;
 
@@ -22,9 +30,12 @@ private class AiSummaryPromptsFilterByObjectTest {
             this.result = result;
         }
 
+        @SuppressWarnings('PMD.ExcessiveParameterList') // signature mandated by StubProvider interface
         public Object handleMethodCall(Object stubbedObject, String stubbedMethodName, Type returnType,
             List<Type> listOfParamTypes, List<String> listOfParamNames, List<Object> listOfArgs) {
-            if (stubbedMethodName == 'getPromptTemplates') return result;
+            if (stubbedMethodName == 'getPromptTemplates'){
+                return result;
+            }
             return null;
         }
     }
@@ -70,8 +81,8 @@ private class AiSummaryPromptsFilterByObjectTest {
     }
 
     private static void setMock(ConnectApi.EinsteinPromptRecordCollectionOutputRepresentation mock) {
-        AiSummaryPromptsFilterByObject.service = (EinsteinLLMService) Test.createStub(
-            EinsteinLLMService.class, new MockEinsteinLLMService(mock)
+        AiSummaryPromptsFilterByObject.service = (EinsteinLLMServiceInterface) Test.createStub(
+            EinsteinLLMServiceInterface.class, new MockEinsteinLLMService(mock)
         );
     }
 
@@ -82,45 +93,51 @@ private class AiSummaryPromptsFilterByObjectTest {
     }
 
     @IsTest
-    static void getValues_returnsBothMatchingTemplates() {
+    static void shouldReturnMatchingTemplates() {
         setMock(buildMock(ENTITY_NAME, TEMPLATES));
         AiSummaryPromptsFilterByObject picklist = buildPicklist(ENTITY_NAME);
 
-        Test.startTest();
-        VisualEditor.DynamicPickListRows rows = picklist.getValues();
-        Test.stopTest();
+        System.runAs(UserFactory.getMinAccessInstantAiSummaryUser()) {
+            Test.startTest();
+            VisualEditor.DynamicPickListRows rows = picklist.getValues();
+            Test.stopTest();
 
-        Assert.isNotNull(rows);
+            Assert.isNotNull(rows);
+        }
     }
 
     @IsTest
-    static void getValues_excludesNonMatchingEntity() {
+    static void shouldReturnNoTemplates() {
         setMock(buildMock('Contact', TEMPLATES));
         AiSummaryPromptsFilterByObject picklist = buildPicklist(ENTITY_NAME);
 
-        Test.startTest();
-        VisualEditor.DynamicPickListRows rows = picklist.getValues();
-        Test.stopTest();
+        System.runAs(UserFactory.getMinAccessInstantAiSummaryUser()) {
+            Test.startTest();
+            VisualEditor.DynamicPickListRows rows = picklist.getValues();
+            Test.stopTest();
 
-        Assert.isNotNull(rows);
+            Assert.isNotNull(rows);
+        }
     }
 
     @IsTest
-    static void getDefaultValue_returnsFirstMatchingTemplate() {
+    static void shouldReturnFirstMatchingTemplate() {
         setMock(buildMock(ENTITY_NAME, TEMPLATES));
         AiSummaryPromptsFilterByObject picklist = buildPicklist(ENTITY_NAME);
 
-        Test.startTest();
-        VisualEditor.DataRow defaultRow = picklist.getDefaultValue();
-        Test.stopTest();
+        System.runAs(UserFactory.getMinAccessInstantAiSummaryUser()) {
+            Test.startTest();
+            VisualEditor.DataRow defaultRow = picklist.getDefaultValue();
+            Test.stopTest();
 
-        Assert.isNotNull(defaultRow);
-        Assert.areEqual(TEMPLATES[0].label, defaultRow.getLabel());
-        Assert.areEqual(TEMPLATES[0].devName, (String) defaultRow.getValue());
+            Assert.isNotNull(defaultRow);
+            Assert.areEqual(TEMPLATES[0].label, defaultRow.getLabel());
+            Assert.areEqual(TEMPLATES[0].devName, (String) defaultRow.getValue());
+        }
     }
 
     @IsTest
-    static void getDefaultValue_returnsNull_whenNoMatchingTemplates() {
+    static void shouldReturnNullDefaultValue() {
         ConnectApi.EinsteinPromptRecordCollectionOutputRepresentation empty =
             new ConnectApi.EinsteinPromptRecordCollectionOutputRepresentation();
         empty.promptRecords = new List<ConnectApi.EinsteinPromptRecordRepresentation>();
@@ -128,24 +145,28 @@ private class AiSummaryPromptsFilterByObjectTest {
         setMock(empty);
         AiSummaryPromptsFilterByObject picklist = buildPicklist(ENTITY_NAME);
 
-        Test.startTest();
-        VisualEditor.DataRow defaultRow = picklist.getDefaultValue();
-        Test.stopTest();
+        System.runAs(UserFactory.getMinAccessInstantAiSummaryUser()) {
+            Test.startTest();
+            VisualEditor.DataRow defaultRow = picklist.getDefaultValue();
+            Test.stopTest();
 
-        Assert.isNull(defaultRow);
+            Assert.isNull(defaultRow);
+        }
     }
 
     @IsTest
-    static void memoization_bothMethodsOnSameInstance() {
+    static void shouldReturnMatchingTemplatesWithFirstHasDefaultValue() {
         setMock(buildMock(ENTITY_NAME, TEMPLATES));
         AiSummaryPromptsFilterByObject picklist = buildPicklist(ENTITY_NAME);
 
-        Test.startTest();
-        VisualEditor.DataRow defaultRow = picklist.getDefaultValue();
-        VisualEditor.DynamicPickListRows rows = picklist.getValues();
-        Test.stopTest();
+        System.runAs(UserFactory.getMinAccessInstantAiSummaryUser()) {
+            Test.startTest();
+            VisualEditor.DataRow defaultRow = picklist.getDefaultValue();
+            VisualEditor.DynamicPickListRows rows = picklist.getValues();
+            Test.stopTest();
 
-        Assert.isNotNull(defaultRow);
-        Assert.isNotNull(rows);
+            Assert.isNotNull(defaultRow);
+            Assert.isNotNull(rows);
+        }
     }
 }
