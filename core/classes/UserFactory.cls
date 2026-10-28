@@ -1,11 +1,17 @@
-public class UserFactory {
+/** @description Factory class for creating test users with the required profiles and permission sets. */
+@TestVisible
+public with sharing class UserFactory {
 
     private static final String MINIMUM_ACCESS_PROFILE = 'Minimum Access - Salesforce';
     private static final String PERMISSION_SET_NAME = 'InstantAiSummaryUser';
     private static final String EINSTEIN_GPT_PERMISSION_SET = 'EinsteinGPTPromptTemplateUser';
 
-    /** @description Creates a test user with Minimum Access profile, EinsteinGPTPromptTemplateUser and InstantAiSummaryUser permission sets. */
-    public static User create() {
+    /**
+     * @description Creates a test user with Minimum Access profile, EinsteinGPTPromptTemplateUser and InstantAiSummaryUser permission sets.
+     * @return The newly created User record.
+     */
+    @TestVisible
+    private static User create() {
         Profile p = [
             SELECT Id FROM Profile
             WHERE Name = :MINIMUM_ACCESS_PROFILE
@@ -25,7 +31,7 @@ public class UserFactory {
             LanguageLocaleKey = 'en_US',
             ProfileId = p.Id
         );
-        insert u;
+        Database.insert(u, AccessLevel.USER_MODE);
 
         List<PermissionSet> permissionSets = [
             SELECT Id FROM PermissionSet
@@ -37,13 +43,17 @@ public class UserFactory {
         for (PermissionSet ps : permissionSets) {
             assignments.add(new PermissionSetAssignment(AssigneeId = u.Id, PermissionSetId = ps.Id));
         }
-        insert assignments;
+        Database.insert(assignments, AccessLevel.USER_MODE);
 
         return u;
     }
 
-    /** @description Retrieves the test user created by the create method. */
-    public static User getMinAccessInstantAiSummaryUser() {
+    /**
+     * @description Retrieves the test user created by the create method.
+     * @return The User record with Alias 'iasuser'.
+     */
+    @TestVisible
+    private static User getMinAccessInstantAiSummaryUser() {
         return [
             SELECT Id FROM User
             WHERE Alias = 'iasuser'
