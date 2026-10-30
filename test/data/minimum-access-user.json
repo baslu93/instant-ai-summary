@@ -1,0 +1,12 @@
+{
+    "FirstName": "Test",
+    "LastName": "User",
+    "Email": "instant.ai.summary.test@example.com",
+    "Alias": "iasuser",
+    "TimeZoneSidKey": "America/New_York",
+    "LocaleSidKey": "en_US",
+    "EmailEncodingKey": "UTF-8",
+    "LanguageLocaleKey": "en_US",
+    "profileName": "Minimum Access - Salesforce",
+    "permsets": ["EinsteinGPTPromptTemplateUser", "InstantAiSummaryUser", "MinimumTestPermissions"]
+}
