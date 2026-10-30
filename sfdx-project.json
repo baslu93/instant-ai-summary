@@ -1,12 +1,13 @@
 {
   "packageDirectories": [
     {
-      "versionName": "ver 1.0",
-      "versionNumber": "1.0.0.NEXT",
+      "versionName": "ver 1.2",
+      "versionNumber": "1.2.0.NEXT",
       "path": "core",
       "default": true,
       "package": "Instant AI Summary",
-      "versionDescription": "A Salesforce LWC that automatically generates an AI-powered record summary when visible, with no user interaction required."
+      "versionDescription": "A Salesforce LWC that automatically generates an AI-powered record summary when visible, with no user interaction required.",
+      "ancestorVersion": "1.1.0"
     }
   ],
   "name": "instant-ai-summary",
@@ -15,7 +16,6 @@
   "sourceApiVersion": "68.0",
   "packageAliases": {
     "Instant AI Summary": "0HokP00000001lhSAA",
-    "Instant AI Summary@0.2.0-8": "04tkP0000006XxNQAU",
-    "Instant AI Summary@1.0.0-1": "04tkP0000006XyzQAE"
+    "Instant AI Summary@1.2.0-1": "04tkP0000006bphQAA"
   }
 }
