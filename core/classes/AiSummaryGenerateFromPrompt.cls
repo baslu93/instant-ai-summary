@@ -58,7 +58,9 @@ public with sharing class AiSummaryGenerateFromPrompt {
         List<SObject> records;
         try {
             records = Database.query(
-                String.format('SELECT Id FROM {0} WHERE Id = :recordId', new List<Object>{ objectName }),
+                String.format('SELECT Id FROM {0} WHERE Id = :recordId', 
+                    new List<Object>{ String.escapeSingleQuotes(objectName) }
+                ),
                 AccessLevel.USER_MODE
             );
         } catch (Exception e) {
