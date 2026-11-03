@@ -26,7 +26,7 @@ export default class InstantAiSummary extends LightningElement {
         }));
     }
 
-    async connectedCallback() {
+    connectedCallback() {
         if (this.promptTemplate && this.recordId) {
             this.loadSummary();
         }
