@@ -23,7 +23,7 @@ While the Prompt Template runs in the background, the card takes up very little 
 Assign the **Instant AI Summary User** permission set to every user who should see the summary card. This grants access to the required Apex classes and the `UseInstantAiSummary` custom permission.
 
 > [!NOTE]
-> Users also need the **EinsteinGPT Prompt Template User** permission set assigned separately.
+> Users also need the **Prompt Template User** permission set assigned separately.
 
 ### 2. Add the component to a record page
 
