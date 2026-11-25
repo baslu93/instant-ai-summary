@@ -1,13 +1,13 @@
 {
   "packageDirectories": [
     {
-      "versionName": "ver 1.2",
-      "versionNumber": "1.2.0.NEXT",
+      "versionName": "ver 1.3",
+      "versionNumber": "1.3.0.NEXT",
       "path": "core",
       "default": true,
       "package": "Instant AI Summary",
       "versionDescription": "A Salesforce LWC that automatically generates an AI-powered record summary when visible, with no user interaction required.",
-      "ancestorVersion": "1.1.0"
+      "ancestorVersion": "1.2.0"
     }
   ],
   "name": "instant-ai-summary",
